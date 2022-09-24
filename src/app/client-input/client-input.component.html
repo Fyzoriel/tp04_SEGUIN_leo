@@ -1,0 +1,16 @@
+<label for="firstname">First name</label>
+<input type="text" id="firstname" [(ngModel)]="data.firstName" (ngModelChange)="onChange()"/>
+
+<label for="name">Name</label>
+<input type="text" id="name" [(ngModel)]="data.name" (ngModelChange)="onChange()"/>
+
+<label for="email">Email</label>
+<input type="text" id="email" [(ngModel)]="data.email" (ngModelChange)="onChange()"/>
+
+<label for="phone">Phone</label>
+<input type="text" id="phone" [(ngModel)]="data.phone" (ngModelChange)="onChange()"/>
+
+<label for="address">Address</label>
+<input type="text" id="address" [(ngModel)]="data.address" (ngModelChange)="onChange()"/>
+
+<input type="submit" [disabled]="!isDataValid" (click)="onClick()"/>
