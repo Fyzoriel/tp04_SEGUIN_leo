@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { ClientDataType } from "../types/client-data.type";
+import { ClientDataType } from "./shared/types/client-data.type";
+import { FormResultType } from "./shared/types/form.type";
 
 @Component({
   selector: "app-root",
@@ -7,10 +8,15 @@ import { ClientDataType } from "../types/client-data.type";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  public title = "tp02_SEGUIN_leo";
-  public clientData: ClientDataType = {};
+  public clientFormData: FormResultType<ClientDataType>;
 
-  onClientDataChange(event: ClientDataType) {
-    this.clientData = event;
+  constructor() {
+    this.clientFormData = {
+      submitted: false
+    };
+  }
+
+  onClientDataChangeEvent(event: FormResultType<ClientDataType>) {
+    this.clientFormData = event;
   }
 }
