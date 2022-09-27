@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { ClientDataType } from "../../../shared/types/client-data.type";
@@ -10,10 +10,11 @@ import { FormResultType } from "../../../shared/types/form.type";
   templateUrl: "./client-input.component.html",
   styleUrls: ["./client-input.component.css"]
 })
-export class ClientInputComponent {
+export class ClientInputComponent implements OnInit {
   @Output() public newClientDataEvent = new EventEmitter<
     FormResultType<ClientDataType>
   >();
+  @Input() clientData: ClientDataType | undefined;
 
   public clientDataForm: FormGroup;
 
@@ -24,23 +25,20 @@ export class ClientInputComponent {
       firstName: [
         "",
         {
-          validators: Validators.required,
-          updateOn: "blur"
+          validators: Validators.required
         }
       ],
       name: [
         "",
         {
-          validators: Validators.required,
-          updateOn: "blur"
+          validators: Validators.required
         }
       ],
 
       email: [
         "",
         {
-          validators: [Validators.required, Validators.email],
-          updateOn: "blur"
+          validators: [Validators.required, Validators.email]
         }
       ],
       phone: [
@@ -51,8 +49,7 @@ export class ClientInputComponent {
             Validators.pattern(
               "(0|\\+33 ?)[1-9]([-. ]?[0-9]{2} ?){3}([-. ]?[0-9]{2})"
             )
-          ],
-          updateOn: "blur"
+          ]
         }
       ],
       address: ["", Validators.required],
@@ -63,8 +60,7 @@ export class ClientInputComponent {
             Validators.required,
             Validators.minLength(minPassphraseLength),
             CustomValidators.mustMatch("confirmPassphrase", true)
-          ],
-          updateOn: "blur"
+          ]
         }
       ],
       confirmPassphrase: [
@@ -74,11 +70,20 @@ export class ClientInputComponent {
             Validators.required,
             Validators.minLength(minPassphraseLength),
             CustomValidators.mustMatch("passphrase")
-          ],
-          updateOn: "blur"
+          ]
         }
       ]
     });
+  }
+
+  ngOnInit(): void {
+    const values = {
+      ...this.clientData,
+      passphrase: "",
+      confirmPassphrase: ""
+    };
+
+    this.clientDataForm.patchValue(values);
   }
 
   onSubmit = () => {

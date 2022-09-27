@@ -1,4 +1,4 @@
 <app-header class="header_container"></app-header>
-<app-client-input class="input_container" *ngIf="!clientFormData.submitted" (newClientDataEvent)="onClientDataChangeEvent($event)"></app-client-input>
-<app-display-client-data [clientData]="clientFormData['data']" *ngIf="clientFormData.submitted" (newClientDataEvent)="onClientDataChangeEvent($event)"></app-display-client-data>
+<app-client-input class="input_container" *ngIf="!clientFormData.submitted" [clientData]="clientFormData.data" (newClientDataEvent)="onClientDataChangeEvent($event)"></app-client-input>
+<app-display-client-data *ngIf="clientFormData.submitted" [clientData]="clientFormData.data" (newClientDataEvent)="onClientDataChangeEvent($event)"></app-display-client-data>
 <app-footer class="footer_container"></app-footer>
