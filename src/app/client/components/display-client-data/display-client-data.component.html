@@ -1,9 +1,9 @@
-<div [hidden]="clientData === undefined">
-  <p>First name: {{clientData?.firstName}}</p>
-  <p>Name: {{clientData?.name}}</p>
-  <p>Email: {{clientData?.email}}</p>
-  <p>Address: {{clientData?.address}}</p>
-  <p>Phone: {{clientData?.phone}}</p>
+<div [hidden]="clientData === undefined" class="data_container">
+  <p class="display">First name: {{clientData?.firstName}}</p>
+  <p class="display">Name: {{clientData?.name}}</p>
+  <p class="display">Email: {{clientData?.email}}</p>
+  <p class="display">Address: {{clientData?.address}}</p>
+  <p class="display">Phone: {{clientData?.phone}}</p>
 
-  <input type="submit" value="Return" (click)="onClick()">
+  <input class="return" type="submit" value="Return" (click)="onClick()">
 </div>
