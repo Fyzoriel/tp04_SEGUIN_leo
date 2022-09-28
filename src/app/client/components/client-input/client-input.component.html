@@ -1,7 +1,7 @@
 <form class="form" [formGroup]="clientDataForm" (ngSubmit)="onSubmit()" novalidate>
   <p>Information</p>
   <div class="input_container">
-    <div class="errors" *ngIf="!clientDataForm.get('firstName')?.valid && (clientDataForm.get('firstName')?.touched && clientDataForm.get('firstName')?.dirty)">
+    <div class="errors" *ngIf="clientDataForm.get('firstName')?.invalid && (clientDataForm.get('firstName')?.touched || clientDataForm.get('firstName')?.dirty)">
       <p class="error" *ngIf="clientDataForm.get('firstName')?.errors?.['required']">First name is required</p>
     </div>
     <label for="firstname">First name</label>
@@ -9,7 +9,7 @@
   </div>
 
   <div class="input_container">
-    <div class="errors" *ngIf="!clientDataForm.get('name')?.valid && (clientDataForm.get('name')?.touched && clientDataForm.get('name')?.dirty)">
+    <div class="errors" *ngIf="clientDataForm.get('name')?.invalid && (clientDataForm.get('name')?.touched || clientDataForm.get('name')?.dirty)">
       <p class="error" *ngIf="clientDataForm.get('name')?.errors?.['required']">Name is required</p>
     </div>
     <label for="name">Name</label>
@@ -17,7 +17,7 @@
   </div>
 
   <div class="input_container">
-    <div class="errors" *ngIf="!clientDataForm.get('email')?.valid && clientDataForm.get('email')?.touched && clientDataForm.get('email')?.dirty">
+    <div class="errors" *ngIf="clientDataForm.get('email')?.invalid && (clientDataForm.get('email')?.touched || clientDataForm.get('email')?.dirty)">
       <p class="error" *ngIf="clientDataForm.get('email')?.errors?.['required']">Email is required</p>
       <p class="error" *ngIf="clientDataForm.get('email')?.errors?.['email']">Email is not valid</p>
     </div>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="input_container">
-    <div class="errors" *ngIf="!clientDataForm.get('phone')?.valid && clientDataForm.get('phone')?.touched && clientDataForm.get('phone')?.dirty">
+    <div class="errors" *ngIf="clientDataForm.get('phone')?.invalid && (clientDataForm.get('phone')?.touched || clientDataForm.get('phone')?.dirty)">
       <p class="error" *ngIf="clientDataForm.get('phone')?.errors?.['required']">Phone is required</p>
       <p class="error" *ngIf="clientDataForm.get('phone')?.errors?.['pattern']">Phone is not valid</p>
     </div>
@@ -35,7 +35,7 @@
   </div>
 
   <div class="input_container">
-    <div class="errors" *ngIf="!clientDataForm.get('address')?.valid && clientDataForm.get('address')?.touched && clientDataForm.get('address')?.dirty">
+    <div class="errors" *ngIf="clientDataForm.get('address')?.invalid && (clientDataForm.get('address')?.touched || clientDataForm.get('address')?.dirty)">
       <p class="error" *ngIf="clientDataForm.get('address')?.errors?.['required']">Address is required</p>
     </div>
     <label for="address">Address</label>
@@ -43,7 +43,7 @@
   </div>
 
   <div class="input_container">
-    <div class="errors" *ngIf="!clientDataForm.get('passphrase')?.valid && clientDataForm.get('passphrase')?.touched && clientDataForm.get('passphrase')?.dirty">
+    <div class="errors" *ngIf="clientDataForm.get('passphrase')?.invalid && (clientDataForm.get('passphrase')?.touched || clientDataForm.get('passphrase')?.dirty)">
       <p class="error" *ngIf="clientDataForm.get('passphrase')?.errors?.['required']">Pass phrase is required</p>
       <p class="error" *ngIf="clientDataForm.get('passphrase')?.errors?.['minlength']">Pass phrase must be at least 8 characters long</p>
     </div>
@@ -52,7 +52,7 @@
   </div>
 
   <div class="input_container">
-    <div class="errors" *ngIf="!clientDataForm.get('confirmPassphrase')?.valid && clientDataForm.get('confirmPassphrase')?.touched && clientDataForm.get('confirmPassphrase')?.dirty">
+    <div class="errors" *ngIf="clientDataForm.get('confirmPassphrase')?.invalid && (clientDataForm.get('confirmPassphrase')?.touched || clientDataForm.get('confirmPassphrase')?.dirty)">
       <p class="error" *ngIf="clientDataForm.get('confirmPassphrase')?.errors?.['required']">Confirm pass phrase is required</p>
       <p class="error" *ngIf="clientDataForm.get('confirmPassphrase')?.errors?.['minlength']">Confirm pass phrase must be at least 8 characters long</p>
       <p class="error" *ngIf="clientDataForm.get('confirmPassphrase')?.errors?.['matching']">Pass phrases are not equivalent</p>

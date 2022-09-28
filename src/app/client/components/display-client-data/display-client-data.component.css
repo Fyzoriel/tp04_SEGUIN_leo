@@ -49,3 +49,8 @@
 
   font-size: 14px;
 }
+
+.return:hover:enabled {
+  color: #4BD976;
+  border-color: #4BD976;
+}
