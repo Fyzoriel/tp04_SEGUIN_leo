@@ -7,6 +7,8 @@ import { ClientInputComponent } from "./client/components/client-input/client-in
 import { HeaderComponent } from "./core/components/header/header.component";
 import { FooterComponent } from "./core/components/footer/footer.component";
 import { DisplayClientDataComponent } from "./client/components/display-client-data/display-client-data.component";
+import { DataControlDirective } from "./shared/directives/data-control.directive";
+import { PhonePipe } from "./shared/phone/phone.pipe";
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { DisplayClientDataComponent } from "./client/components/display-client-d
     ClientInputComponent,
     HeaderComponent,
     FooterComponent,
-    DisplayClientDataComponent
+    DisplayClientDataComponent,
+    DataControlDirective,
+    PhonePipe
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
