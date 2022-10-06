@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { ClientDataType } from "../../../shared/types/client-data.type";
-import { CustomValidators } from "../../../shared/CustomValidators";
+import { CustomValidators } from "../../../shared/validators/CustomValidators";
 import { FormResultType } from "../../../shared/types/form.type";
 
 @Component({
