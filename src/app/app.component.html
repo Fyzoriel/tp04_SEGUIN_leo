@@ -1,4 +1,5 @@
 <app-header class="header_container"></app-header>
-<app-client-input class="input_container" *ngIf="!clientFormData.submitted" [clientData]="clientFormData.data" (newClientDataEvent)="onClientDataChangeEvent($event)"></app-client-input>
-<app-display-client-data *ngIf="clientFormData.submitted" [clientData]="clientFormData.data" (newClientDataEvent)="onClientDataChangeEvent($event)"></app-display-client-data>
+<div id="content">
+  <router-outlet></router-outlet>
+</div>
 <app-footer class="footer_container"></app-footer>
