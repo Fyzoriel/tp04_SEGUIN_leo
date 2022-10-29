@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="userDataForm" (ngSubmit)="onSubmit()" novalidate>
   <p>Login</p>
-
+  <p>The data are stored in cache, if you refresh, the data will be erased </p>
   <div class="errors" *ngIf="loginError">
     <p class="error">{{ loginError }}</p>
   </div>
