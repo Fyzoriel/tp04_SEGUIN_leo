@@ -1,0 +1,13 @@
+<header class="header">
+  <div class="router_group">
+    <a class="link" routerLink="/" routerLinkActive="link--active" [routerLinkActiveOptions]="{exact: true}">Products</a>
+  </div>
+  <div class="router_group" *ngIf="!storageService.isLoggedIn()">
+    <a class="link" routerLink="/login" routerLinkActive="link--active">Login</a>
+    <a class="link" routerLink="/register" routerLinkActive="link--active">Register</a>
+  </div>
+  <div class="router_group" *ngIf="storageService.isLoggedIn()">
+    <a class="link" routerLink="/profile" routerLinkActive="link--active">Profile</a>
+    <a class="link" (click)="logout($event)" href="">Logout</a>
+  </div>
+</header>

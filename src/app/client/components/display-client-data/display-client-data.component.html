@@ -1,9 +1,0 @@
-<div [hidden]="clientData === undefined" class="data_container">
-  <p class="display">First name: {{clientData?.firstName}}</p>
-  <p class="display">Name: {{clientData?.name}}</p>
-  <p class="display">Email: {{clientData?.email}}</p>
-  <p class="display">Address: {{clientData?.address}}</p>
-  <p class="display">Phone: {{clientData?.phone | phone}}</p>
-
-  <input class="return" type="submit" value="Edit" (click)="onClick()">
-</div>
