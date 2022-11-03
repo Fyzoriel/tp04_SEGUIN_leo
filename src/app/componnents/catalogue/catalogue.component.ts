@@ -10,6 +10,7 @@ import {
 
 import { ProductService } from "../../services/product.service";
 import { ProductType } from "../../types/product.type";
+import { LabelType, Options } from "@angular-slider/ngx-slider";
 
 @Component({
   selector: "app-catalogue",
@@ -26,7 +27,26 @@ export class CatalogueComponent implements OnInit {
   public modelsFilter: string[] = [];
   public nameFilter: string = "";
 
-  public constructor(private readonly productService: ProductService) {
+  minValue: number = 100;
+  maxValue: number = 400;
+  options: Options = {
+    floor: 0,
+    ceil: 500,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return `<b>Min price:</b> $${value}`;
+        case LabelType.High:
+          return `<b>Max price:</b> $${value}`;
+        default:
+          return `$${value}`;
+      }
+    }
+  };
+
+  public constructor(private readonly productService: ProductService) {}
+
+  public ngOnInit(): void {
     const debounceTimeMs = 300;
     this.nameFilterChanged$
       .pipe(debounceTime(debounceTimeMs), distinctUntilChanged())
@@ -39,9 +59,7 @@ export class CatalogueComponent implements OnInit {
       .subscribe(() => {
         this.fetchProducts();
       });
-  }
 
-  public ngOnInit(): void {
     this.products$ = this.productService.get();
     this.models$ = this.productService.getModels();
   }

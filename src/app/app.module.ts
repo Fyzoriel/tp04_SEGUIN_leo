@@ -27,6 +27,7 @@ import { CatalogueComponent } from "./componnents/catalogue/catalogue.component"
 import { DataControlDirective } from "./directives/data-control.directive";
 
 import { PhonePipe } from "./pipes/phone/phone.pipe";
+import { NgxSliderModule } from "@angular-slider/ngx-slider";
 
 registerLocaleData(localeFr);
 
@@ -49,7 +50,8 @@ registerLocaleData(localeFr);
     HttpClientModule,
     ReactiveFormsModule,
     RouterOutlet,
-    NgSelectModule
+    NgSelectModule,
+    NgxSliderModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

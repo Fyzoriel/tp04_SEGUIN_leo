@@ -18,7 +18,7 @@ export class ProductService {
     return this.httpClient.get<ProductType[]>(this.env.products);
   };
 
-  getModels(): Observable<string[]> {
+  public getModels = (): Observable<string[]> => {
     const products = this.get();
 
     const models: string[] = [];
@@ -35,5 +35,5 @@ export class ProductService {
         return models;
       })
     );
-  }
+  };
 }
