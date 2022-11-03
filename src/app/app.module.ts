@@ -1,10 +1,14 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterOutlet } from "@angular/router";
+
 import { registerLocaleData } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
+
 import localeFr from "@angular/common/locales/fr";
-import { RouterOutlet } from "@angular/router";
+
+import { NgSelectModule } from "@ng-select/ng-select";
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -44,7 +48,8 @@ registerLocaleData(localeFr);
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterOutlet
+    RouterOutlet,
+    NgSelectModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

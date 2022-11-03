@@ -18,11 +18,13 @@ import { ProductType } from "../../types/product.type";
 })
 export class CatalogueComponent implements OnInit {
   public products$!: Observable<ProductType[]>;
-  public nameFilterChanged$ = new Subject<string>();
+  public models$!: Observable<string[]>;
 
+  public nameFilterChanged$ = new Subject<string>();
+  public modelsFilterChanged$ = new Subject<string[]>();
+
+  public modelsFilter: string[] = [];
   public nameFilter: string = "";
-  private readonly minPriceFilter: number | undefined;
-  private readonly maxPriceFilter: number | undefined;
 
   public constructor(private readonly productService: ProductService) {
     const debounceTimeMs = 300;
@@ -31,19 +33,23 @@ export class CatalogueComponent implements OnInit {
       .subscribe(() => {
         this.fetchProducts();
       });
+
+    this.modelsFilterChanged$
+      .pipe(debounceTime(debounceTimeMs), distinctUntilChanged())
+      .subscribe(() => {
+        this.fetchProducts();
+      });
   }
 
   public ngOnInit(): void {
     this.products$ = this.productService.get();
+    this.models$ = this.productService.getModels();
   }
 
   public filterProduct = (product: ProductType) => {
     return (
       product.name.toLowerCase().includes(this.nameFilter.toLowerCase()) &&
-      (this.minPriceFilter === undefined ||
-        product.price >= this.minPriceFilter) &&
-      (this.maxPriceFilter === undefined ||
-        product.price <= this.maxPriceFilter)
+      this.modelsFilter.every(model => product.model.includes(model))
     );
   };
 
