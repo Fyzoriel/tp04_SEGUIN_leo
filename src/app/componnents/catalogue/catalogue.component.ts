@@ -10,6 +10,7 @@ import {
 
 import { ProductService } from "../../services/product.service";
 import { ProductType } from "../../types/product.type";
+import { LabelType, Options } from "@angular-slider/ngx-slider";
 
 @Component({
   selector: "app-catalogue",
@@ -18,32 +19,38 @@ import { ProductType } from "../../types/product.type";
 })
 export class CatalogueComponent implements OnInit {
   public products$!: Observable<ProductType[]>;
+  public models$!: Observable<string[]>;
+
   public nameFilterChanged$ = new Subject<string>();
+  public modelsFilterChanged$ = new Subject<string[]>();
 
+  public modelsFilter: string[] = [];
   public nameFilter: string = "";
-  private readonly minPriceFilter: number | undefined;
-  private readonly maxPriceFilter: number | undefined;
 
-  public constructor(private readonly productService: ProductService) {
+  public constructor(private readonly productService: ProductService) {}
+
+  public ngOnInit(): void {
     const debounceTimeMs = 300;
     this.nameFilterChanged$
       .pipe(debounceTime(debounceTimeMs), distinctUntilChanged())
       .subscribe(() => {
         this.fetchProducts();
       });
-  }
 
-  public ngOnInit(): void {
+    this.modelsFilterChanged$
+      .pipe(debounceTime(debounceTimeMs), distinctUntilChanged())
+      .subscribe(() => {
+        this.fetchProducts();
+      });
+
     this.products$ = this.productService.get();
+    this.models$ = this.productService.getModels();
   }
 
   public filterProduct = (product: ProductType) => {
     return (
       product.name.toLowerCase().includes(this.nameFilter.toLowerCase()) &&
-      (this.minPriceFilter === undefined ||
-        product.price >= this.minPriceFilter) &&
-      (this.maxPriceFilter === undefined ||
-        product.price <= this.maxPriceFilter)
+      this.modelsFilter.every(model => product.model.includes(model))
     );
   };
 

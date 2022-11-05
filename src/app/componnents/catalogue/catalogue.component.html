@@ -1,5 +1,17 @@
 <div class="filters">
   <input id="nameFilter" class="input" type="text" placeholder="Search by name" [(ngModel)]="nameFilter" (ngModelChange)="this.nameFilterChanged$.next($event)"/>
+
+  <ng-select
+    [items]="models$ | async"
+    [multiple]="true"
+    [hideSelected]="true"
+    placeholder="Search by model"
+    [(ngModel)]="modelsFilter"
+    (ngModelChange)="this.modelsFilterChanged$.next($event)"
+    [closeOnSelect]="false"
+  >
+  </ng-select>
+
 </div>
 
 <div class="products_container">
