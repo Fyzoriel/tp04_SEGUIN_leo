@@ -1,1 +1,6 @@
-<p>cart works!</p>
+<div *ngIf="(products$ | async)?.length; else noProducts">
+  <p *ngFor="let product of products$ | async">{{product.name}} - {{product.price}} <span (click)="removeFromCart(product)">Remove</span></p>
+</div>
+<ng-template #noProducts>
+  <a routerLink="/" class="link">There is no product in cart :c <br>Click here to go to the product page</a>
+</ng-template>

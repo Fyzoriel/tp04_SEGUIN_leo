@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding } from "@angular/core";
+import { Observable } from "rxjs";
+
+import { ProductType } from "../../types/product.type";
+import { Select, Store } from "@ngxs/store";
+import { CartState } from "../../states/cart.state";
+import { DeleteProduct } from "../../actions/cart.action";
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: "app-cart",
+  templateUrl: "./cart.component.html",
+  styleUrls: ["./cart.component.css"]
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
+  @HostBinding("class.app_content_centered")
+  @Select(CartState.products)
+  products$!: Observable<ProductType[]>;
 
-  constructor() { }
+  constructor(private readonly store: Store) {}
 
-  ngOnInit(): void {
-  }
-
+  public removeFromCart = (product: ProductType): void => {
+    this.store.dispatch(new DeleteProduct(product));
+  };
 }

@@ -23,21 +23,19 @@
 }
 
 .link {
+  margin: 0 1em;
   font-size: 1.1em;
 
-  margin: 0 1em;
-
   color: var(--white);
-
   text-decoration: none;
+}
+
+.link:hover {
+  color: var(--light);
 }
 
 .link--active {
   color: var(--light);
 
   text-decoration: underline;
-}
-
-.link:hover {
-  color: var(--light);
 }

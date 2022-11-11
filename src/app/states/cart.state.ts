@@ -40,8 +40,13 @@ export class CartState {
     { payload }: DeleteProduct
   ): void {
     const state = getState();
+
+    const productIndex = state.products.findIndex(
+      product => product.id === payload.id
+    );
+
     patchState({
-      products: state.products.filter(product => product.id !== payload.id)
+      products: state.products.filter((_, index) => index !== productIndex)
     });
   }
 }

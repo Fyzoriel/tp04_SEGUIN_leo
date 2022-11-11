@@ -8,6 +8,6 @@ export interface ProductType {
   height: number;
   length: number;
   speed: number;
-  capacity?: number;
-  images?: string[];
+  capacity: number;
+  images: string[];
 }

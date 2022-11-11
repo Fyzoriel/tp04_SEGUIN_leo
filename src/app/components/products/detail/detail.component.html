@@ -1,9 +1,12 @@
-<div *ngIf="product">
-  <div class="images">
-
+<div class="details" *ngIf="product">
+  <div class="image_container">
+    <img class="image" [src]="imageSource" alt="product image">
+    <div class="preview">
+      <img class="preview-image" *ngFor="let image of product.images" [src]="image" alt="Rip" (mouseover)="selectImage(image)">
+    </div>
   </div>
   <div class="info">
-    <p>{{product.name}}</p>
+    <p class="title">{{product.name}}</p>
 
     <p>Manufacturer: {{product.manufacturer}}</p>
     <p>Models: {{product.model.join(", ")}}</p>
@@ -14,6 +17,6 @@
     <p>Max speed {{product.speed}}</p>
 
     <p>{{product.price | number:'':'fr'}} €</p>
-    <button (click)="addToCart()">Add to cart</button>
+    <button class="remove" (click)="addToCart()">Add to cart</button>
   </div>
 </div>
