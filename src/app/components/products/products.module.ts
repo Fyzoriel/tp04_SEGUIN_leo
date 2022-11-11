@@ -3,8 +3,11 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 
 import { DetailComponent } from "./detail/detail.component";
-import { CartComponent } from "../user/cart/cart.component";
+import { CartComponent } from "../cart/cart.component";
 import { CatalogueComponent } from "./catalogue/catalogue.component";
+import { NgSelectModule } from "@ng-select/ng-select";
+import { NgxSliderModule } from "@angular-slider/ngx-slider";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
   {
@@ -25,7 +28,13 @@ const routes: Routes = [
   }
 ];
 @NgModule({
-  declarations: [DetailComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)]
+  declarations: [CatalogueComponent, DetailComponent],
+  imports: [
+    CommonModule,
+    NgSelectModule,
+    NgxSliderModule,
+    FormsModule,
+    RouterModule.forChild(routes)
+  ]
 })
 export class ProductsModule {}

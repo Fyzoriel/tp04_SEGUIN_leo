@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 
 import { ProductService } from "../../../services/product.service";
 import { ProductType } from "../../../types/product.type";
+import { Store } from "@ngxs/store";
+import { AddProduct } from "../../../actions/cart.action";
 
 @Component({
   selector: "app-detail",
@@ -10,18 +12,25 @@ import { ProductType } from "../../../types/product.type";
   styleUrls: ["./detail.component.css"]
 })
 export class DetailComponent implements OnInit {
-  private products: ProductType | undefined;
+  public product: ProductType | undefined;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly productService: ProductService
+    private readonly productService: ProductService,
+    private readonly store: Store
   ) {}
 
   ngOnInit(): void {
     const id: number = Number(this.route.snapshot.paramMap.get("id"));
 
     this.productService.get().subscribe(products => {
-      this.products = products.find(product => product.id === id);
+      this.product = products.find(product => product.id === id);
     });
   }
+
+  public addToCart = (): void => {
+    if (this.product) {
+      this.store.dispatch(new AddProduct(this.product));
+    }
+  };
 }

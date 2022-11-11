@@ -3,8 +3,7 @@ import { Action, Selector, State, StateContext } from "@ngxs/store";
 
 import { CartStateModel } from "./cart.state.model";
 import { ProductType } from "../types/product.type";
-import { AddProduct } from "../actions/cart.action";
-import { StateClass } from "@ngxs/store/internals";
+import { AddProduct, DeleteProduct } from "../actions/cart.action";
 
 @State<CartStateModel>({
   name: "cart",
@@ -27,6 +26,17 @@ export class CartState {
     const state = getState();
     patchState({
       products: [...state.products, payload]
+    });
+  }
+
+  @Action(DeleteProduct)
+  public deleteProduct(
+    { getState, patchState }: StateContext<CartStateModel>,
+    { payload }: DeleteProduct
+  ): void {
+    const state = getState();
+    patchState({
+      products: state.products.filter(product => product.id !== payload.id)
     });
   }
 }

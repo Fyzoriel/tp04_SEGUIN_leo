@@ -28,6 +28,11 @@ const routes: Routes = [
       (await import("./components/user/user.module")).UserModule,
     canActivate: [AuthGuard]
   },
+  {
+    path: "cart",
+    loadChildren: async () =>
+      (await import("./components/cart/cart.module")).CartModule
+  },
   { path: "**", redirectTo: "" }
 ];
 

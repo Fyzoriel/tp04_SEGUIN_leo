@@ -3,16 +3,12 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 
 import { ProfileComponent } from "./profile/profile.component";
-import { CartComponent } from "./cart/cart.component";
+import { PhonePipe } from "../../pipes/phone/phone.pipe";
 
 const routes: Routes = [
   {
     path: "profile",
     component: ProfileComponent
-  },
-  {
-    path: "cart",
-    component: CartComponent
   },
   {
     path: "**",
@@ -21,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CartComponent],
+  declarations: [ProfileComponent, PhonePipe],
   imports: [CommonModule, RouterModule.forChild(routes)]
 })
 export class UserModule {}
