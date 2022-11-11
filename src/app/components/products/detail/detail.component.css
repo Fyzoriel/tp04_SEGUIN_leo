@@ -28,6 +28,8 @@
   border-radius: 5px;
 
   object-fit: cover;
+
+  box-shadow: var(--shadow-light);
 }
 
 .preview-image {
@@ -36,6 +38,8 @@
   margin: 0 0.5em;
 
   border-radius: 5px;
+
+  box-shadow: var(--shadow-light);
 }
 
 p {
@@ -46,7 +50,7 @@ color: var(--white); }
   font-weight: bold;
 }
 
-.remove {
+.add {
   padding: 1em 2em;
 
   background-color: transparent;
@@ -58,7 +62,7 @@ color: var(--white); }
   font-size: 14px;
 }
 
-.remove:hover {
+.add:hover {
   color: var(--green);
   border-color: var(--green);
 }
