@@ -23,6 +23,8 @@
 }
 
 .link {
+  font-size: 1.1em;
+
   margin: 0 1em;
 
   color: var(--white);
@@ -34,4 +36,8 @@
   color: var(--light);
 
   text-decoration: underline;
+}
+
+.link:hover {
+  color: var(--light);
 }

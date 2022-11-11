@@ -18,6 +18,11 @@ export class CartState {
     return state.products;
   }
 
+  @Selector()
+  public static count(state: CartStateModel): number {
+    return state.products.length;
+  }
+
   @Action(AddProduct)
   public addProduct(
     { getState, patchState }: StateContext<CartStateModel>,

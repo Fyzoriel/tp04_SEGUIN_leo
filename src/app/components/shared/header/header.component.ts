@@ -1,8 +1,12 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { Select } from "@ngxs/store";
+
+import { Observable } from "rxjs";
 
 import { StorageService } from "../../../services/storage.service";
 import { AuthService } from "../../../services/auth.service";
+import { CartState } from "../../../states/cart.state";
 
 @Component({
   selector: "app-header",
@@ -10,6 +14,8 @@ import { AuthService } from "../../../services/auth.service";
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent {
+  @Select(CartState.count) cartCount$!: Observable<number>;
+
   public constructor(
     private readonly router: Router,
     public readonly storageService: StorageService,

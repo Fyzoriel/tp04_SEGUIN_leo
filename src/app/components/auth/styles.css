@@ -13,7 +13,7 @@
   color: var(--white);
   background-color: var(--dark);
 
-  border-radius: 20px;
+  border-radius: 10px;
   border-top: 1px solid var(--secondary);
 
   box-shadow: 0 10px 15px -10px rgba(0,0,0,0.3);
@@ -44,7 +44,7 @@
   color: var(--light);
 
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
 
   box-shadow: var(--shadow-light);
 
@@ -62,7 +62,7 @@
   color: var(--blue);
 
   border: 2px solid var(--blue);
-  border-radius: 20px;
+  border-radius: 10px;
 
   font-size: 14px;
 }
