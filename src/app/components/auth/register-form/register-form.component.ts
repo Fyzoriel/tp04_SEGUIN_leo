@@ -11,7 +11,7 @@ import { UserRegisterType } from "../../../types/user.type";
 @Component({
   selector: "app-register-form",
   templateUrl: "./register-form.component.html",
-  styleUrls: ["./register-form.component.css", "../styles.css"]
+  styleUrls: ["./register-form.component.css", "../../user/styles.css"]
 })
 export class RegisterFormComponent implements OnInit {
   @HostBinding("class.app_content_centered")

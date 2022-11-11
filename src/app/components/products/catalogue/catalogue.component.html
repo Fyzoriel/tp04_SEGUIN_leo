@@ -11,11 +11,10 @@
     [closeOnSelect]="false"
   >
   </ng-select>
-
 </div>
 
 <div class="products_container">
-  <div *ngFor="let product of products$ | async" class="products_card">
+  <div *ngFor="let product of products$ | async" class="products_card" routerLink="/products/{{product.id}}">
     <img
       *ngIf="product.images !== undefined && product.images.length > 0"
       src="{{ product.images[0] }}"

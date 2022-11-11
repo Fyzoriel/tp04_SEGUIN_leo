@@ -1,28 +1,33 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { RegisterFormComponent } from "./componnents/user/register-form/register-form.component";
-import { LoginFormComponent } from "./componnents/user/login-form/login-form.component";
-import { ProfileComponent } from "./componnents/user/profile/profile.component";
-
-import { CatalogueComponent } from "./componnents/catalogue/catalogue.component";
-
 import { NegateAuthGuard } from "./guards/negateAuth.guard";
 import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
-  { path: "", component: CatalogueComponent },
   {
-    path: "register",
-    component: RegisterFormComponent,
+    path: "",
+    pathMatch: "full",
+    loadChildren: async () =>
+      (await import("./components/products/products.module")).ProductsModule
+  },
+  {
+    path: "products",
+    loadChildren: async () =>
+      (await import("./components/products/products.module")).ProductsModule
+  },
+  {
+    path: "auth",
+    loadChildren: async () =>
+      (await import("./components/auth/auth.module")).AuthModule,
     canActivate: [NegateAuthGuard]
   },
   {
-    path: "login",
-    component: LoginFormComponent,
-    canActivate: [NegateAuthGuard]
+    path: "user",
+    loadChildren: async () =>
+      (await import("./components/user/user.module")).UserModule,
+    canActivate: [AuthGuard]
   },
-  { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "**", redirectTo: "" }
 ];
 

@@ -8,12 +8,11 @@ import {
   Subject
 } from "rxjs";
 
-import { ProductService } from "../../services/product.service";
-import { ProductType } from "../../types/product.type";
-import { LabelType, Options } from "@angular-slider/ngx-slider";
+import { ProductService } from "../../../services/product.service";
+import { ProductType } from "../../../types/product.type";
 
 @Component({
-  selector: "app-catalogue",
+  selector: "app-products",
   templateUrl: "./catalogue.component.html",
   styleUrls: ["./catalogue.component.css"]
 })

@@ -7,7 +7,7 @@ import { StorageService } from "../../../services/storage.service";
 @Component({
   selector: "app-login-form",
   templateUrl: "./login-form.component.html",
-  styleUrls: ["./login-form.component.css", "../styles.css"]
+  styleUrls: ["./login-form.component.css", "../../user/styles.css"]
 })
 export class LoginFormComponent implements OnInit {
   @HostBinding("class.app_content_centered")

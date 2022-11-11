@@ -9,25 +9,25 @@ import { HttpClientModule } from "@angular/common/http";
 import localeFr from "@angular/common/locales/fr";
 
 import { NgSelectModule } from "@ng-select/ng-select";
+import { NgxSliderModule } from "@angular-slider/ngx-slider";
 
 import { AppRoutingModule } from "./app-routing.module";
 
 import { ProductService } from "./services/product.service";
 
 import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./componnents/shared/header/header.component";
-import { FooterComponent } from "./componnents/shared/footer/footer.component";
+import { HeaderComponent } from "./components/shared/header/header.component";
+import { FooterComponent } from "./components/shared/footer/footer.component";
 
-import { RegisterFormComponent } from "./componnents/user/register-form/register-form.component";
-import { LoginFormComponent } from "./componnents/user/login-form/login-form.component";
-import { ProfileComponent } from "./componnents/user/profile/profile.component";
+import { RegisterFormComponent } from "./components/auth/register-form/register-form.component";
+import { LoginFormComponent } from "./components/auth/login-form/login-form.component";
+import { ProfileComponent } from "./components/user/profile/profile.component";
 
-import { CatalogueComponent } from "./componnents/catalogue/catalogue.component";
+import { CatalogueComponent } from "./components/products/catalogue/catalogue.component";
 
 import { DataControlDirective } from "./directives/data-control.directive";
 
 import { PhonePipe } from "./pipes/phone/phone.pipe";
-import { NgxSliderModule } from "@angular-slider/ngx-slider";
 
 registerLocaleData(localeFr);
 

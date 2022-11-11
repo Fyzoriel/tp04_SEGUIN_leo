@@ -28,7 +28,6 @@
    outline: 1px solid var(--light);
  }
 
-
 .products_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -60,6 +59,8 @@
   transform: translateY(-0.5em);
 
   box-shadow: var(--shadow-hard);
+
+  cursor: pointer;
 }
 
 .preview_image {
